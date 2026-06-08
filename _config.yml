@@ -1,0 +1,23 @@
+title: Andrea
+description: Infraestructura IT y diseño web. Guías técnicas y proyectos reales.
+url: "https://andreadigitalstudio.github.io"
+baseurl: ""
+
+author:
+  name: Andrea
+  github: AndreaDigitalStudio
+
+# Configuración de Jekyll
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+
+# Excluir ficheros del build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
