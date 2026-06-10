@@ -1,0 +1,49 @@
+---
+layout: default
+---
+<div class="home">
+    <div class="home-hero">
+        <h1>Andrea</h1>
+        <p>Guías técnicas de infraestructura IT y diseño web. Pasos reales, comandos reales, output real.</p>
+    </div>
+
+    <div class="categorias">
+        <a href="/linux" class="categoria-card">
+            <img src="/assets/img/linux1.png" alt="">
+            <span class="cat-nombre">Linux</span>
+        </a>
+        <a href="/redes" class="categoria-card">
+            <img src="/assets/img/redes1.png" alt="">
+            <span class="cat-nombre">Redes</span>
+        </a>
+        <a href="/seguridad" class="categoria-card">
+            <img src="/assets/img/seguridad1.png" alt="">
+            <span class="cat-nombre">Seguridad</span>
+        </a>
+        <a href="/bases-de-datos" class="categoria-card">
+            <img src="/assets/img/bbdd1.png" alt="">
+            <span class="cat-nombre">Bases de datos</span>
+        </a>
+        <a href="/docker" class="categoria-card">
+            <img src="/assets/img/docker1.png" alt="">
+            <span class="cat-nombre">Docker</span>
+        </a>
+        <a href="/scripting" class="categoria-card">
+            <img src="/assets/img/scripting1.png" alt="">
+            <span class="cat-nombre">Scripting</span>
+        </a>
+    </div>
+
+    <div class="articulos-recientes">
+        <h2>Guías recientes</h2>
+        <div class="articulos-lista">
+            {% for post in site.posts limit:10 %}
+            <a href="{{ post.url }}" class="articulo-item">
+                <span class="art-cat">{{ post.categories | first }}</span>
+                <span class="art-titulo">{{ post.title }}</span>
+                <span class="art-fecha">{{ post.date | date: "%d/%m/%Y" }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>

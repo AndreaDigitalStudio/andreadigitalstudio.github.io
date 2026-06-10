@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/" class="nav-logo">{{ site.title }}</a>
+        <div class="nav-links">
+            <a href="/linux">Linux</a>
+            <a href="/redes">Redes</a>
+            <a href="/seguridad">Seguridad</a>
+            <a href="/bases-de-datos">Bases de datos</a>
+            <a href="/docker">Docker</a>
+            <a href="/scripting">Scripting</a>
+        </div>
+        <div class="nav-ext">
+            <a href="https://github.com/AndreaDigitalStudio" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <span>Andrea · {{ site.description }}</span>
+        <a href="https://github.com/AndreaDigitalStudio" target="_blank">GitHub</a>
+    </footer>
+</body>
+
+</html>
