@@ -3,6 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <link
@@ -16,6 +21,7 @@
     <nav>
         <a href="/" class="nav-logo">{{ site.title }}</a>
         <div class="nav-links">
+            <a href="/git">Git</a>
             <a href="/linux">Linux</a>
             <a href="/redes">Redes</a>
             <a href="/seguridad">Seguridad</a>
@@ -23,7 +29,12 @@
             <a href="/docker">Docker</a>
             <a href="/scripting">Scripting</a>
         </div>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Buscar...">
+            <ul id="results-container"></ul>
+        </div>
         <div class="nav-ext">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
             <a href="https://github.com/AndreaDigitalStudio" target="_blank">GitHub</a>
         </div>
     </nav>
@@ -36,6 +47,35 @@
         <span>Andrea · {{ site.description }}</span>
         <a href="https://github.com/AndreaDigitalStudio" target="_blank">GitHub</a>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script>
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        if (html.getAttribute('data-theme') === 'dark') {
+            toggle.textContent = '☀️';
+        }
+        toggle.addEventListener('click', () => {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            if (isDark) {
+                html.removeAttribute('data-theme');
+                toggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                toggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+            searchResultTemplate: '<li><a href="{url}"><span class="art-cat">{category}</span> {title}</a></li>',
+            noResultsText: 'Sin resultados',
+            fuzzy: false
+        });
+    </script>
 </body>
 
 </html>

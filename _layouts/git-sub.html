@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<div class="home">
+    <div class="home-hero">
+        <h1>{{ page.title }}</h1>
+        <p>{{ page.descripcion }}</p>
+    </div>
+
+    <div class="articulos-recientes">
+        <h2>Guías</h2>
+        <div class="articulos-lista">
+            {% if page.filtro == 'bugs' %}
+            {% for post in site.tags.bugs %}
+            {% if post.categories contains 'git' %}
+            <a href="{{ post.url }}" class="articulo-item">
+                <span class="art-cat">bug</span>
+                <span class="art-titulo">{{ post.title }}</span>
+                <span class="art-fecha">{{ post.date | date: "%d/%m/%Y" }}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+            {% elsif page.filtro == 'commits' %}
+            {% for post in site.tags['convencional-commits'] %}
+            {% if post.categories contains 'git' %}
+            <a href="{{ post.url }}" class="articulo-item">
+                <span class="art-cat">commit</span>
+                <span class="art-titulo">{{ post.title }}</span>
+                <span class="art-fecha">{{ post.date | date: "%d/%m/%Y" }}</span>
+            </a>
+            {% endif %}
+            {% endfor %}
+            {% elsif page.filtro == 'general' %}
+            {% for post in site.categories.git %}
+            {% unless post.tags contains 'bugs' or post.tags contains 'convencional-commits' %}
+            <a href="{{ post.url }}" class="articulo-item">
+                <span class="art-cat">git</span>
+                <span class="art-titulo">{{ post.title }}</span>
+                <span class="art-fecha">{{ post.date | date: "%d/%m/%Y" }}</span>
+            </a>
+            {% endunless %}
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="post-footer">
+        <a href="/git" class="coming-soon-back">← Git</a>
+    </footer>
+</div>
