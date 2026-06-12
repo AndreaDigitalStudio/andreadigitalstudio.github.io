@@ -613,7 +613,7 @@ footer a:hover { color: var(--accent); }
   border-radius: 10px;
 }
 
-/* ── BANNER ERROR ──*/
+/* ── BANNERS ──*/
 .error-box {
   background: #fff5f5;
   border-left: 3px solid #c0392b;
@@ -623,5 +623,17 @@ footer a:hover { color: var(--accent); }
   font-family: var(--mono);
   font-size: 13px;
   color: #7a1a1a;
+  line-height: 1.6;
+}
+
+.warning-box {
+  background: var(--cream2);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink2);
   line-height: 1.6;
 }
